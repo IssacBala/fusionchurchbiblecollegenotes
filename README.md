@@ -2,7 +2,12 @@
 
 **Fusion Bible College, Hyderabad**
 
-A single, self-contained, offline webpage (`Bible_Study_Notes.html`) that compiles the college's systematic theology course notes into one searchable, printable study resource. No internet connection, server, or installation is required — open the file in any modern browser (Chrome, Edge, Firefox, Safari) on desktop or mobile.
+Two self-contained, offline webpages behind a dashboard landing page (`index.html`):
+
+- **`college_notes.html`** — compiles the college's systematic theology course notes into one searchable, printable study resource
+- **`bible.html`** — a full-screen Scripture Presenter for reading and displaying passages during teaching
+
+No internet connection, server, or installation is required — open `index.html` in any modern browser (Chrome, Edge, Firefox, Safari) on desktop or mobile and choose which resource to open.
 
 ---
 
@@ -70,13 +75,11 @@ Dating follows the chart's own early-date chronology (e.g. 1446 BC exodus), with
 
 | File | Description |
 |------|-------------|
-| `Bible_Study_Notes.html` | The complete compendium (~2.9 MB, fully self-contained — notes, question bank, and survey images embedded) |
-| `Question_Bank.html` | Optional standalone copy of the question bank with per-subject filter chips |
-| `Bible_Panorama_In_Order.pdf` | The 11 chart photos as a landscape PDF, ordered chronologically with era captions |
-| `Christology_Notes.pdf` | Christology course notes as a print-ready A4 booklet (31 pages) |
-| `Bibliology_Notes.pdf` | Bibliology course notes as a print-ready A4 booklet (12 pages) |
+| `index.html` | Dashboard landing page — links to `college_notes.html` and `bible.html` |
+| `college_notes.html` | The complete compendium (fully self-contained — notes, question bank, and survey images embedded) |
+| `bible.html` | Scripture Presenter — full-screen scripture display with book/chapter/verse navigation for teaching |
 
-The HTML file can be copied to a phone, shared over WhatsApp, hosted on any static server, or kept on a USB drive — it works identically everywhere, with no external dependencies.
+These files can be copied to a phone, shared over WhatsApp, hosted on any static server, or kept on a USB drive — they work identically everywhere, with no external dependencies.
 
 ---
 
