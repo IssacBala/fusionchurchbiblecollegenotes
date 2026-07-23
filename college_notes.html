@@ -38,6 +38,11 @@
       line-height: 1.62
     }
 
+    /* anchor targets must clear the sticky top bar, or the heading lands underneath it */
+    [id] {
+      scroll-margin-top: 70px
+    }
+
     /* ---------- top bar ---------- */
     .top {
       position: sticky;
