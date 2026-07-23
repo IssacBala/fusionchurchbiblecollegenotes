@@ -563,13 +563,135 @@
       }
     }
 
+    /* ---------- mobile ---------- */
+    #menubtn {
+      display: none
+    }
+
+    #scrim {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 41, 74, .5);
+      z-index: 40
+    }
+
     @media(max-width:900px) {
-      nav#side {
+      #menubtn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        font-size: 19px;
+        flex: 0 0 auto
+      }
+
+      .brand span {
         display: none
       }
 
+      .brand b {
+        font-size: 13px
+      }
+
+      .top {
+        gap: 8px;
+        padding: 8px 12px
+      }
+
+      .searchbox {
+        min-width: 0;
+        flex-basis: 100%;
+        order: 3
+      }
+
+      #q {
+        max-width: none;
+        min-width: 0
+      }
+
+      #count {
+        min-width: 0
+      }
+
+      .top label {
+        font-size: 11.5px
+      }
+
+      nav#side {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 84%;
+        max-width: 320px;
+        z-index: 50;
+        transform: translateX(-105%);
+        transition: transform .25s ease;
+        max-height: none;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, .25);
+        padding-top: 14px
+      }
+
+      body.navopen nav#side {
+        transform: none
+      }
+
+      body.navopen #scrim {
+        display: block
+      }
+
       main {
-        padding: 20px 18px 60px
+        padding: 18px 14px 60px
+      }
+
+      .book-head {
+        gap: 12px;
+        margin-top: 26px
+      }
+
+      .book-head h1 {
+        font-size: 24px
+      }
+
+      .book-num {
+        flex: 0 0 42px;
+        height: 42px;
+        font-size: 20px
+      }
+
+      h2 {
+        font-size: 19px
+      }
+
+      h3 {
+        font-size: 16px
+      }
+
+      body {
+        font-size: 15px
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: normal
+      }
+
+      .qa .ans {
+        padding-left: 13px
+      }
+
+      .qa summary {
+        padding: 9px 11px
+      }
+
+      .ansbtn {
+        flex-basis: 100%;
+        margin-left: 0;
+        margin-top: 8px
       }
     }
   </style>
@@ -577,6 +699,7 @@
 
 <body>
   <header class="top">
+    <button id="menubtn" aria-label="Menu">&#9776;</button>
     <div class="brand"><b>Fusion Bible College</b><span>Systematic Theology &middot; Study Notes</span></div>
     <div class="searchbox">
       <input id="q" type="search" placeholder="Search a topic&hellip; e.g. kenosis, inerrancy, canon, atonement"
@@ -588,6 +711,7 @@
       <button id="printbtn">Print</button>
     </div>
   </header>
+  <div id="scrim"></div>
   <div class="wrap">
     <nav id="side">
       <div class="nav-book"><a class="nav-head" href="#christology"><span class="tab">1</span><span
@@ -9753,6 +9877,15 @@
       var content = document.getElementById('content'), q = document.getElementById('q'),
         count = document.getElementById('count'), filter = document.getElementById('filter'),
         marks = [], cur = -1, timer = null;
+
+      // mobile drawer
+      var menubtn = document.getElementById('menubtn'), scrim = document.getElementById('scrim');
+      function closeNav() { document.body.classList.remove('navopen'); }
+      if (menubtn) menubtn.addEventListener('click', function () { document.body.classList.toggle('navopen'); });
+      if (scrim) scrim.addEventListener('click', closeNav);
+      document.querySelectorAll('#side a').forEach(function (a) {
+        a.addEventListener('click', function () { if (window.innerWidth <= 900) closeNav(); });
+      });
 
       // sidebar expand/collapse
       document.querySelectorAll('.nav-head').forEach(function (h) {
